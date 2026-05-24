@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kase Tejaswini — portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="terminal-window">
+    <header class="terminal-header">
+      <span class="header-dots">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </span>
+      <span class="header-title">Kase Tejaswini — bash</span>
+    </header>
+
+    <main class="terminal-body">
+      <div class="welcome">
+        <pre class="ascii-art">
+  ____            _ _ _
+ |  _ \ ___  __ _| (_) |__   ___ _ __
+ | |_) / _ \/ _` | | | '_ \ / _ \ '__|
+ |  __/ (_) | (_| | | | |_) |  __/ |
+ |_|   \___/ \__, |_|_|_.__/ \___|_|
+             |___/
+        </pre>
+        <p class="welcome-text">Type <code>help</code> to see available commands.</p>
+      </div>
+
+      <div id="output"></div>
+
+      <div class="input-line">
+        <span class="prompt">visitor@kase:<span class="path">~</span>$</span>
+        <input
+          type="text"
+          id="command-input"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          aria-label="Enter command"
+          placeholder="PORTFOLIO"
+        />
+        <span class="cursor" aria-hidden="true"></span>
+      </div>
+    </main>
+  </div>
+
+  <div id="minimize-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-box">
+      <p class="modal-text">Are you sure you wanna close?</p>
+      <div class="modal-buttons">
+        <button type="button" id="modal-yes" class="modal-btn modal-btn-yes">Yes</button>
+        <button type="button" id="modal-no" class="modal-btn modal-btn-no">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
