@@ -1,0 +1,323 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0d1117;
+  font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+  font-size: 14px;
+  color: #7ee787;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.terminal-window {
+  width: 100%;
+  max-width: 720px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-header {
+  background: #161b22;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid #30363d;
+}
+
+.header-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot.red   { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.header-title {
+  color: #8b949e;
+  font-size: 13px;
+}
+
+.terminal-body {
+  background: #0d1117;
+  padding: 1rem 1.25rem 1.25rem;
+  min-height: 420px;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.welcome {
+  margin-bottom: 1rem;
+}
+
+.ascii-art {
+  color: #7ee787;
+  margin: 0 0 0.5rem 0;
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.welcome-text {
+  color: #8b949e;
+  margin: 0;
+}
+
+.welcome-text code {
+  color: #7ee787;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  background: rgba(126, 231, 135, 0.1);
+}
+
+#output {
+  margin-bottom: 0.5rem;
+}
+
+.output-block {
+  margin-bottom: 1rem;
+}
+
+.output-block .line {
+  margin: 0.15rem 0;
+  word-break: break-word;
+}
+
+.output-block .line.cmd {
+  color: #8b949e;
+}
+
+.output-block .line.cmd .prompt-inline {
+  color: #7ee787;
+}
+
+.output-block .line.error {
+  color: #f85149;
+}
+
+.output-block .line.info {
+  color: #79c0ff;
+}
+
+.output-block .line.success {
+  color: #7ee787;
+}
+
+.output-block .line.muted {
+  color: #8b949e;
+}
+
+.command-output {
+  margin: 0.5rem 0 0 0;
+  padding: 0.5rem 0;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.output-block pre {
+  margin: 0.5rem 0 0 0;
+  padding: 0.75rem;
+  background: #161b22;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #c9d1d9;
+  border-left: 3px solid #7ee787;
+}
+
+.output-block ul {
+  margin: 0.25rem 0 0 0;
+  padding-left: 1.5rem;
+  color: #c9d1d9;
+  line-height: 1.6;
+}
+
+.output-block a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.output-block a:hover {
+  text-decoration: underline;
+}
+
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.suggestion-btn {
+  font: inherit;
+  font-size: 12px;
+  padding: 0.25rem 0.5rem;
+  background: #21262d;
+  color: #8b949e;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.suggestion-btn:hover {
+  background: #30363d;
+  color: #7ee787;
+  border-color: #7ee787;
+}
+
+.input-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.prompt {
+  color: #7ee787;
+  flex-shrink: 0;
+}
+
+.prompt .path {
+  color: #79c0ff;
+}
+
+#command-input {
+  flex: 1;
+  min-width: 120px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #c9d1d9;
+  font: inherit;
+  font-size: 14px;
+}
+
+#command-input::placeholder {
+  color: #484f58;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: #7ee787;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Scrollbar */
+.terminal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 4px;
+}
+
+.terminal-body::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
+}
+
+/* Minimize confirmation modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-overlay.is-open {
+  display: flex;
+}
+
+.modal-box {
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  min-width: 320px;
+  min-height: 140px;
+  position: relative;
+}
+
+.modal-text {
+  color: #c9d1d9;
+  margin: 0 0 1.25rem 0;
+  font-size: 14px;
+}
+
+.modal-buttons {
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.modal-btn {
+  font: inherit;
+  font-size: 13px;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid #30363d;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.modal-btn-no {
+  background: #238636;
+  color: #fff;
+  border-color: #238636;
+  position: relative;
+  z-index: 2;
+}
+
+.modal-btn-no:hover {
+  background: #2ea043;
+}
+
+.modal-btn-yes {
+  background: #21262d;
+  color: #8b949e;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.modal-btn-yes:hover {
+  background: #30363d;
+  color: #c9d1d9;
+}
